@@ -1,0 +1,271 @@
+% --------------------------------------------------------------------------
+% Author   Christopher Goes
+% Email    goesc@acm.org    (Alternate: goes8945@alumni.uidaho.edu)
+% --------------------------------------------------------------------------
+% Majority of the LaTeX boilerplate and stuff is credited to the following people:
+%     - Matthew Brown, CS:       For sharing his thesis and all the neat hacks it had
+%     - Cara Leatherman, CoGS:   For template improvements
+%     - Chris Zeoli, CoGS:       For the original UI CoGS template
+% --------------------------------------------------------------------------
+
+\documentclass[12pt]{UIdahoMastersThesis}
+
+% --------------------------------------------------------------------------
+% Packages
+\usepackage[latin1]{inputenc}
+\usepackage[printonlyused]{acronym} % Use [nolist,nohyperlinks] to not write list of acronyms and not put hyperlinks to entries in list.
+% Add any packages you want to use here
+
+\makeatletter  % DO NOT REMOVE THIS (Actually, try removing it, compile, and enjoy the stream of errors :) )
+
+% --------------------------------------------------------------------------
+% Thesis Information
+\title{Your Thesis Title}
+\author{John E. Smith}
+\thesisdegree{Your degree}  % e.g Master of Science, Master of Engineering, etc.
+\major{Your major}  % e.g Computer Science, Computer Engineering, etc.
+\advisor{Your advisor, Ph.D.}  % Make sure title of names matches CoGS format requirements!
+\cmone{Committee Member 1, Ph.D.}
+\cmtwo{Committee Member 2, Ph.D.}
+\deptadmin{Department Chair, Ph.D.}  % Department administrator or chair
+\graddate{Month, Year}  % e.g May 2017
+% --------------------------------------------------------------------------
+
+
+% Line spacing. The University of Idaho requires thesis formatting to be 1.5-2.0. For LaTeX 1.3=1.5, 1.6=2.0.
+\linespread{1.6}
+
+% Defines section counter for frontmatter. This way section number does not appear in the TOC for frontmatter sections
+\setcounter{secnumdepth}{0}
+
+% Sets what level of sections show up in the table of contents. 0 = sections, 1 = subsections, 2 = subsubsections, etc.
+\setcounter{tocdepth}{1}
+
+
+% Configure the PDF output (Most of this is optional, it just adds metadata to the PDF)
+\usepackage[% pdftex
+pdfauthor=\author,
+pdftitle=\title,
+pdfsubject={Example subject},
+pdfkeywords={keyword1;keyword2;etc},
+pdfproducer={ShareLatex},  % e.g ShareLatex
+pdfcreator={pdflatex},
+pdfprintscaling={AppDefault}]
+{hyperref}
+
+% Configure hyperlinks
+\hypersetup{
+	colorlinks=true, %set true if you want colored links
+	linktoc=all,     %set to all if you want both sections and subsections linked
+	linkcolor=black,  %choose some color if you want links to stand out
+	citecolor=black,
+	urlcolor=black,
+}
+
+% Changes default indenting in list of figures to 0 
+%\makeatletter
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{2.3em}}% Default: 1.5em/2.3em
+\let\l@table\l@figure
+%\makeatother
+
+% Where to look for images 
+% (https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Graphics_storage)
+% \graphicspath{ {./Figures/} }
+
+% Uncomment to set default style for Listings to be code (Code style is defined in .cls file)
+% \lstset{style=code}
+
+
+% -------------------------------------------------------------------------
+\begin{document}
+
+\frontmatter
+
+\titleformat{\chapter}[block]{\scshape\LARGE}{\centering\chaptertitlename\  \thechapter:}{1ex}{\centering}{}
+	\titlespacing{\chapter}{0pt}{-40pt}{20pt}
+
+\titleformat{\section}[hang]{\scshape\Large}{\thesection}{1ex}{}
+    \titlespacing{\section}{0pt}{0pt}{10pt}
+	%\titlespacing*{\section}{0pt}{-50pt}{40pt}
+
+\titleformat{\subsection}[hang]{\scshape\large}{\thesection}{1ex}{}
+    \titlespacing{\subsection}{0pt}{0pt}{10pt}
+	%\titlespacing*{\subsection}{0pt}{-50pt}{40pt}
+
+% -------------------------------------------------------------------------
+% -- Title Page --
+\thesistitlepage
+
+
+% --------------------------------------------------------------------------
+% -- Authorization to Submit Thesis --
+\frontmattersection{Authorization to Submit Thesis}
+\authorizationpage
+\newpage
+
+
+% --------------------------------------------------------------------------
+% -- Abstract --
+\frontmattersection{Abstract}
+\begin{center}
+	{\LARGE\textsc{Abstract}}
+\end{center}
+
+Your abstract. Note that the abstract is limited to 150 words.
+
+\newpage
+
+
+% --------------------------------------------------------------------------
+% -- Acknowledgements --
+ \frontmattersection{Acknowledgements}
+ \begin{center}
+ 	{\LARGE\textsc{Acknowledgements}}
+ \end{center}
+ 
+Your acknowledgements.
+
+\newpage
+
+
+% --------------------------------------------------------------------------
+% -- Dedication --
+% \frontmattersection{Dedication}
+% \vspace*{\fill}
+% \begin{center}
+%   {\LARGE\textsc{Dedication}}
+   
+   
+%   Your dedication. This section is optional, per handbook.
+% \end{center}
+% \vspace{\fill}
+% \newpage
+
+
+% --------------------------------------------------------------------------
+% -- Table of Contents --
+\frontmattersection{Table of Contents}
+\tableofcontents
+\newpage
+
+
+% --------------------------------------------------------------------------
+% -- List of Tables --
+% \frontmattersection{List of Tables}
+% \listoftables
+% \newpage
+
+
+% --------------------------------------------------------------------------
+% -- List of Figures --
+% \frontmattersection{List of Figures}
+% \listoffigures
+% \newpage
+
+
+% --------------------------------------------------------------------------
+% -- List of Code Listings --
+% \frontmattersection{List of Code Listings}
+% \lstlistoflistings
+% \newpage
+
+
+% --------------------------------------------------------------------------
+% -- List of Acronyms --
+% This is useful for those in fields with an excessive amount of acronyms, 
+\frontmattersection{List of Acronyms}
+\begin{center}
+	{\LARGE\textsc{List of Acronyms}}
+\end{center}
+
+% Use acronyms in a consistent manner and without spelling mistakes
+%   \acf{cogs}  Full definition of acronym
+%   \ac{cogs}   Regular usage (does the stuff [between braces])
+\begin{acronym}[CoGS ]  % Passing an acronym as argument makes other acronyms align with it. This is usually the longest acronym.
+    \acro{cogs}[CoGS]{College of Graduate Studies}
+    \acro{vm}[VM]{Virtual Machine}  % Normal version of an acronym. Usage: \ac{vm}
+    \acrodefplural{vm}[VMs]{Virtual Machines}  % Plural version of an acronym. Usage: \acp{vm}
+\end{acronym}
+
+
+
+% --------------------------------------------------------------------------
+\mainmatter  % Starts the content part of the thesis
+\setcounter{secnumdepth}{3}  % Sets depth section numbers go to. 
+% NOTE !! : There is a bug currently where they will not work at depth of 3, e.g section 1.2.3 will not display, but 1.2 will.
+
+
+
+
+% --------------------------------------------------------------------------
+% -- Introduction --
+\clearpage
+\chapter{Introduction}
+\label{Chapter:Introduction}
+% \acresetall  % Use this if you want acronyms to be fully stated upon first use again, such as in new chapters
+
+Example introduction. 
+
+Some example citations: website\cite{apache}, blog post\cite{lambert2015}, and academic paper\cite{Barham-2003}.  % Period should follow citations at end of sentence
+
+\section{Example Section}
+Section text.
+\subsection{Example Subsection}
+Subsection text. 
+
+
+\section{Examples of acronyms}
+Example of acronym: \ac{cogs}
+Using it again: \ac{cogs}
+Plural one: \acp{vm}
+
+
+
+
+% --------------------------------------------------------------------------
+% -- Summary and Conclusions --
+\chapter{Summary and Conclusions}
+\label{Chapter:SummaryAndConclusions}
+
+Example summary and conclusions. You can refer to chapters and sections using their label, e.g Chapter \ref{Chapter:Introduction}.
+
+
+
+
+% --------------------------------------------------------------------------
+% -- References --
+
+\clearpage
+\renewcommand\bibname{References} % Relabels bibliography title as "REFERENCES"
+\addcontentsline{toc}{chapter}{\textsc{\bibname}} % Adds to table of contents
+\bibliographystyle{plain}  % Sets style, plain is fine for this
+\bibliography{example-bib-file.bib}  % Name of bibliography file containing your references. It is best practice to have a separate file, as it makes it easier to share your references, make derivative works, or use the references from a prior work (e.g a prior paper that your thesis work is building on).
+
+% Citing GitHub repositories:
+%   http://academia.stackexchange.com/a/14015
+%   https://github.com/blog/1840-improving-github-for-science
+%   https://guides.github.com/activities/citable-code/
+
+
+
+
+% --------------------------------------------------------------------------
+% -- Appendices --
+\clearpage
+\appendix  % Marks start of appendices
+
+% Appendices are done as chapters
+\chapter{Your fist appendix}
+First appendix content
+
+% \clearpage
+% \chapter{Exercise Specification}
+% \lstinputlisting[firstline=56, firstnumber=1, language=yaml,caption=Exercise Specification]{Specifications/exercise-specification.yaml}
+
+% \clearpage
+% \chapter{vsphere-info Script Source Code}
+% \lstinputlisting[firstline=16, firstnumber=1, language=python, caption=vsphere-info script]{Code/scripts/vsphere_info.py}
+
+
+
+\end{document}
