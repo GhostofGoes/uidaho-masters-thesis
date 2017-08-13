@@ -1,22 +1,30 @@
 % --------------------------------------------------------------------------
+% This is a LaTeX template for a University of Idaho Master's thesis.
+% It uses a custom document class file, UIdahoMastersThesis
+% The class and template adhere to the formatting guidelines established by UI College of Graduate Studies (CoGS) as of 2016.
+% That being said, DOUBLE CHECK everything, I'm not perfect, and this isn't either. 
+% I highly recommend getting it reviewed by the Writing Center and CoGS BEFORE you're finished writing. Seriously.
+% --------------------------------------------------------------------------
 % Author   Christopher Goes
 % Email    goesc@acm.org    (Alternate: goes8945@alumni.uidaho.edu)
 % --------------------------------------------------------------------------
-% Majority of the LaTeX boilerplate and stuff is credited to the following people:
-%     - Matthew Brown, CS:       For sharing his thesis and all the neat hacks it had
-%     - Cara Leatherman, CoGS:   For template improvements
-%     - Chris Zeoli, CoGS:       For the original UI CoGS template
+% This template (and my thesis!) would not be possible without the work of these awesome people.
+%     - Matthew Brown, CS       For sharing his thesis and all the neat hacks it had
+%     - Cara Leatherman, CoGS   For template improvements
+%     - Chris Zeoli, CoGS       For the original UI CoGS template
 % --------------------------------------------------------------------------
 
+% This includes the magical class file with the formatting. ** DO NOT REPLACE THIS. Everything WILL break. **
 \documentclass[12pt]{UIdahoMastersThesis}
 
 % --------------------------------------------------------------------------
-% Packages
+% Packages (the class file already imports several. Importing twice usually doesn't hurt, just keep in mind for debugging)
 \usepackage[latin1]{inputenc}
 \usepackage[printonlyused]{acronym} % Use [nolist,nohyperlinks] to not write list of acronyms and not put hyperlinks to entries in list.
-% Add any packages you want to use here
+% ** Add any packages you want to use here **
 
-\makeatletter  % DO NOT REMOVE THIS (Actually, try removing it, compile, and enjoy the stream of errors :) )
+\makeatletter  % ** DO NOT REMOVE THIS ** (Actually, remove it, compile, and enjoy the stream of errors. Its beautiful :) )
+
 
 % --------------------------------------------------------------------------
 % Thesis Information
@@ -25,14 +33,14 @@
 \thesisdegree{Your degree}  % e.g Master of Science, Master of Engineering, etc.
 \major{Your major}  % e.g Computer Science, Computer Engineering, etc.
 \advisor{Your advisor, Ph.D.}  % Make sure title of names matches CoGS format requirements!
-\cmone{Committee Member 1, Ph.D.}
-\cmtwo{Committee Member 2, Ph.D.}
+\cmone{Committee Member 1, Ph.D.}  % First committee member (Alphabetical order by last name, if I recall correctly)
+\cmtwo{Committee Member 2, Ph.D.}  % Second committee member
 \deptadmin{Department Chair, Ph.D.}  % Department administrator or chair
-\graddate{Month, Year}  % e.g May 2017
+\graddate{Month, Year}  % Graduation date, e.g May, 2017
 % --------------------------------------------------------------------------
 
 
-% Line spacing. The University of Idaho requires thesis formatting to be 1.5-2.0. For LaTeX 1.3=1.5, 1.6=2.0.
+% Line spacing. The University of Idaho requires thesis formatting to be 1.5-2.0. In LaTeX 1.3=1.5, 1.6=2.0.
 \linespread{1.6}
 
 % Defines section counter for frontmatter. This way section number does not appear in the TOC for frontmatter sections
@@ -92,6 +100,7 @@ pdfprintscaling={AppDefault}]
     \titlespacing{\subsection}{0pt}{0pt}{10pt}
 	%\titlespacing*{\subsection}{0pt}{-50pt}{40pt}
 
+
 % -------------------------------------------------------------------------
 % -- Title Page --
 \thesistitlepage
@@ -136,7 +145,7 @@ Your acknowledgements.
 %   {\LARGE\textsc{Dedication}}
    
    
-%   Your dedication. This section is optional, per handbook.
+% ***  Your dedication. This section is optional, per the handbook. ***
 % \end{center}
 % \vspace{\fill}
 % \newpage
@@ -241,10 +250,12 @@ Example summary and conclusions. You can refer to chapters and sections using th
 \bibliographystyle{plain}  % Sets style, plain is fine for this
 \bibliography{example-bib-file.bib}  % Name of bibliography file containing your references. It is best practice to have a separate file, as it makes it easier to share your references, make derivative works, or use the references from a prior work (e.g a prior paper that your thesis work is building on).
 
-% Citing GitHub repositories:
+% Examples of citing GitHub repositories:
 %   http://academia.stackexchange.com/a/14015
 %   https://github.com/blog/1840-improving-github-for-science
 %   https://guides.github.com/activities/citable-code/
+%   https://github.com/GhostofGoes/uidaho-masters-thesis/
+%   Wait, that last one is recursive...oh no. RIP poorly programmed web crawling spider.
 
 
 
@@ -254,14 +265,16 @@ Example summary and conclusions. You can refer to chapters and sections using th
 \clearpage
 \appendix  % Marks start of appendices
 
-% Appendices are done as chapters
+% Appendices are done as LaTeX chapters
 \chapter{Your fist appendix}
 First appendix content
 
+% ** This is an example of a YAML file listing, but it could be anythig, e.g full experiment results, or list of equipment used. **
 % \clearpage
 % \chapter{Exercise Specification}
 % \lstinputlisting[firstline=56, firstnumber=1, language=yaml,caption=Exercise Specification]{Specifications/exercise-specification.yaml}
 
+% ** Example of a Python script code listing **
 % \clearpage
 % \chapter{vsphere-info Script Source Code}
 % \lstinputlisting[firstline=16, firstnumber=1, language=python, caption=vsphere-info script]{Code/scripts/vsphere_info.py}
@@ -269,3 +282,5 @@ First appendix content
 
 
 \end{document}
+
+% ** DO NOT PUT ANYTHING AFTER THE END OF THE DOCUMENT! **
