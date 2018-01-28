@@ -8,7 +8,7 @@
 
 
 % Sets up the class
-\LoadClass[oneside]{book}
+\LoadClass[oneside,12pt]{book}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{UIdahoMastersThesis}[2017/04/03 University of Idaho Masters Thesis]
 
